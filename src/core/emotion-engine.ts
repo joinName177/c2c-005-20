@@ -1,5 +1,8 @@
 import type { AudioFeatures, EmotionLabel, EmotionResult } from './models';
 
+/** 当前规则引擎版本；规则有任何调整时必须递增，快照凭此说明结论出自哪版规则。 */
+export const EMOTION_RULE_VERSION = 'voice-rules-v1';
+
 const PROFILES: Record<EmotionLabel, AudioFeatures> = {
   '暴躁老哥': { loudness: .95, dynamics: .85, pitch: .55, zeroCrossing: .7, pauseRatio: .08, tempoVariation: .8 },
   '温柔姐姐': { loudness: .22, dynamics: .2, pitch: .45, zeroCrossing: .2, pauseRatio: .35, tempoVariation: .18 },

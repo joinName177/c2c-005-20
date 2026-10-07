@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { classifyEmotion } from '../emotion-engine';
+import { classifyEmotion, EMOTION_RULE_VERSION } from '../emotion-engine';
 import { coverPresetFor } from '../cover-presets';
 import type { AudioFeatures, EmotionLabel } from '../models';
 
@@ -18,6 +18,9 @@ describe('classifyEmotion', () => {
     expect(result.confidence).toBeLessThanOrEqual(1);
     expect(result.explanation.length).toBeGreaterThan(4);
     expect(result.scores[label]).toBeGreaterThan(0);
+  });
+  it('exposes a rule version so saved snapshots can name their source rules', () => {
+    expect(EMOTION_RULE_VERSION).toMatch(/^voice-rules-v\d+$/);
   });
   it('provides an editable preset for the selected label', () => {
     const preset = coverPresetFor('元气满满');
