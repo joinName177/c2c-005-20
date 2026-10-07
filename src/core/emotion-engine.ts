@@ -1,5 +1,9 @@
 import type { AudioFeatures, EmotionLabel, EmotionResult } from './models';
 
+// 规则版本号：每次修改 PROFILES / 打分公式 / 文案时递增。
+// 保存于分析快照中，回看时用于区分"保存时的结论"与"当前规则的结论"。
+export const EMOTION_RULES_VERSION = 'emotion-rules@1';
+
 const PROFILES: Record<EmotionLabel, AudioFeatures> = {
   '暴躁老哥': { loudness: .95, dynamics: .85, pitch: .55, zeroCrossing: .7, pauseRatio: .08, tempoVariation: .8 },
   '温柔姐姐': { loudness: .22, dynamics: .2, pitch: .45, zeroCrossing: .2, pauseRatio: .35, tempoVariation: .18 },
